@@ -27,3 +27,9 @@ cargo run --release -- --day <day> benchmark --number <number> --current
 basic line parsing + minimization
 
 [Code](./src/solutions/day01.rs)
+
+## [Day 02: Red-Nosed Reports](https://adventofcode.com/2024/day/2)
+
+basic line parsing
+
+[Code](./src/solutions/day02.rs)
