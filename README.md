@@ -33,3 +33,9 @@ basic line parsing + minimization
 basic line parsing
 
 [Code](./src/solutions/day02.rs)
+
+## [Day 03: Mull It Over](https://adventofcode.com/2024/day/3)
+
+parsing with subtlety
+
+[Code](./src/solutions/day03.rs)

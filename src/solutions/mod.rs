@@ -2,7 +2,7 @@ pub use crate::{Day, Solution};
 
 pub mod day01;
 pub mod day02;
-// pub mod day03;
+pub mod day03;
 // pub mod day04;
 // pub mod day05;
 // pub mod day06;
@@ -30,7 +30,7 @@ pub fn solve(day: Day, part: u8, input: &'static str) -> Solution {
     match day {
         1 => day01::solve(part, input),
         2 => day02::solve(part, input),
-        // 3 => day03::solve(part, input),
+        3 => day03::solve(part, input),
         // 4 => day04::solve(part, input),
         // 5 => day05::solve(part, input),
         // 6 => day06::solve(part, input),
