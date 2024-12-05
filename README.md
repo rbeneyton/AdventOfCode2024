@@ -39,3 +39,9 @@ basic line parsing
 parsing with subtlety
 
 [Code](./src/solutions/day03.rs)
+
+## [Day 04: Ceres Search](https://adventofcode.com/2024/day/4)
+
+matrix and indices
+
+[Code](./src/solutions/day04.rs)
