@@ -1,6 +1,7 @@
 use crate::*;
+use anyhow::{Context, Result};
 
-pub fn solve(part: u8, input: &'static str) -> Solution {
+pub fn solve(part: u8, input: &'static str) -> Result<Solution, anyhow::Error> {
     #![allow(unused)]
     let input = if input.len() > 0 {
         input
@@ -28,7 +29,7 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
         debug_assert_eq!(n, v[1].len());
 
         let res = (0..n).map(|i| (v[0][i] - v[1][i]).abs()).sum();
-        Solution::I64(res)
+        Ok(Solution::I64(res))
     } else {
         let mut h = [FxHashMap::default(), FxHashMap::default()];
         for line in input.lines() {
@@ -45,8 +46,12 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
                 res += k * *v * *c;
             }
         }
-        Solution::I64(res)
+        Ok(Solution::I64(res))
     }
+}
+
+pub fn sol(part: u8, input: &'static str) -> Solution {
+    solve(part, input).expect("solve test")
 }
 
 #[cfg(test)]
@@ -62,21 +67,21 @@ mod tests {
 
     #[test]
     fn part_1_sample() {
-        assert_eq!(solve(1, SAMPLE), Solution::I64(11));
+        assert_eq!(sol(1, SAMPLE), Solution::I64(11));
     }
 
     #[test]
     fn part_1() {
-        assert_eq!(solve(1, ""), Solution::I64(2166959));
+        assert_eq!(sol(1, ""), Solution::I64(2166959));
     }
 
     #[test]
     fn part_2_sample() {
-        assert_eq!(solve(2, SAMPLE), Solution::I64(31));
+        assert_eq!(sol(2, SAMPLE), Solution::I64(31));
     }
 
     #[test]
     fn part_2() {
-        assert_eq!(solve(2, ""), Solution::I64(23741109));
+        assert_eq!(sol(2, ""), Solution::I64(23741109));
     }
 }

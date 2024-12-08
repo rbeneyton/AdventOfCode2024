@@ -1,4 +1,5 @@
 use crate::Solution;
+use anyhow::{Error, Result};
 use itertools::Itertools;
 
 fn valid(x: &str) -> Option<u64> {
@@ -10,7 +11,7 @@ fn valid(x: &str) -> Option<u64> {
     }
 }
 
-pub fn solve(part: u8, input: &'static str) -> Solution {
+pub fn solve(part: u8, input: &'static str) -> Result<Solution, Error> {
     #![allow(unused)]
     let input = if input.len() > 0 {
         input
@@ -33,7 +34,7 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
                 }
             }
         }
-        Solution::U64(res)
+        Ok(Solution::U64(res))
     } else {
         let mut res = 0;
         let mut state_do = true;
@@ -57,8 +58,12 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
                 };
             }
         }
-        Solution::U64(res)
+        Ok(Solution::U64(res))
     }
+}
+
+pub fn sol(part: u8, input: &'static str) -> Solution {
+    solve(part, input).expect("solve test")
 }
 
 #[cfg(test)]
@@ -69,24 +74,23 @@ mod tests {
     fn part_1_sample() {
         const SAMPLE: &str =
             r"xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))";
-        assert_eq!(solve(1, SAMPLE), Solution::U64(161));
+        assert_eq!(sol(1, SAMPLE), Solution::U64(161));
     }
 
     #[test]
     fn part_1() {
-        assert_eq!(solve(1, ""), Solution::U64(165225049));
+        assert_eq!(sol(1, ""), Solution::U64(165225049));
     }
 
     #[test]
     fn part_2_sample() {
         const SAMPLE: &str =
             r"xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))";
-        assert_eq!(solve(2, SAMPLE), Solution::U64(48));
+        assert_eq!(sol(2, SAMPLE), Solution::U64(48));
     }
 
     #[test]
-    #[allow(unused)]
     fn part_2() {
-        assert_eq!(solve(2, ""), Solution::U64(108830766));
+        assert_eq!(sol(2, ""), Solution::U64(108830766));
     }
 }

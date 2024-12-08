@@ -1,6 +1,7 @@
 use std::process::exit;
 extern crate exitcode;
 // use exitcode::ExitCode;
+use anyhow::{Context, Result};
 
 use env_logger::Builder;
 use log::{
@@ -98,7 +99,7 @@ impl From<Level> for LevelFilter {
 
 // }}}
 
-fn main() {
+fn main() -> Result<()> {
     let args = Options::parse();
 
     let mut builder = Builder::from_default_env();
@@ -116,7 +117,7 @@ fn main() {
             }
         },
         Command::Execute(o) => {
-            let res = solve(args.day, o.part, "");
+            let res = solve(args.day, o.part, "").context("solving day")?;
             info!("day {} part {} solve: {}", args.day, o.part, res);
             exitcode::OK
         }

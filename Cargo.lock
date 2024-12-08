@@ -138,6 +138,7 @@ dependencies = [
  "amplify",
  "amplify_derive",
  "amplify_num",
+ "anyhow",
  "argio",
  "ascii",
  "az",

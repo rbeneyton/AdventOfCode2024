@@ -1,4 +1,5 @@
 use crate::Solution;
+use anyhow::{Error, Result};
 use itertools::Itertools;
 
 fn xmas(x: &[char]) -> usize {
@@ -26,7 +27,7 @@ fn xmas_test() {
     assert_eq!(xmas_str("XMASAMX"), 2);
 }
 
-pub fn solve(part: u8, input: &'static str) -> Solution {
+pub fn solve(part: u8, input: &'static str) -> Result<Solution, Error> {
     #![allow(unused)]
     let input = if input.len() > 0 {
         input
@@ -90,7 +91,7 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
             res += xmas(&v);
         }
 
-        Solution::USIZE(res)
+        Ok(Solution::USIZE(res))
     } else {
         // prepare
         let mut res = 0;
@@ -126,8 +127,12 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
                 res += xmas(row, col) as usize;
             }
         }
-        Solution::USIZE(res)
+        Ok(Solution::USIZE(res))
     }
+}
+
+pub fn sol(part: u8, input: &'static str) -> Solution {
+    solve(part, input).expect("solve test")
 }
 
 #[cfg(test)]
@@ -147,21 +152,21 @@ MXMXAXMASX";
 
     #[test]
     fn part_1_sample() {
-        assert_eq!(solve(1, SAMPLE), Solution::USIZE(18));
+        assert_eq!(sol(1, SAMPLE), Solution::USIZE(18));
     }
 
     #[test]
     fn part_1() {
-        assert_eq!(solve(1, ""), Solution::USIZE(2654));
+        assert_eq!(sol(1, ""), Solution::USIZE(2654));
     }
 
     #[test]
     fn part_2_sample() {
-        assert_eq!(solve(2, SAMPLE), Solution::USIZE(9));
+        assert_eq!(sol(2, SAMPLE), Solution::USIZE(9));
     }
 
     #[test]
     fn part_2() {
-        assert_eq!(solve(2, ""), Solution::USIZE(1990));
+        assert_eq!(sol(2, ""), Solution::USIZE(1990));
     }
 }

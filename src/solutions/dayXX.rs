@@ -1,6 +1,7 @@
 use crate::Solution;
+use anyhow::{Error, Result};
 
-pub fn solve(part: u8, input: &'static str) -> Solution {
+pub fn solve(part: u8, input: &'static str) -> Result<Solution, Error> {
     #![allow(unused)]
     let input = if input.len() > 0 {
         input
@@ -9,9 +10,9 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
     };
 
     if part == 1 {
-        Solution::U64(0)
+        Ok(Solution::U64(0))
     } else {
-        Solution::U64(0)
+        Ok(Solution::U64(0))
     }
 }
 

@@ -1,4 +1,5 @@
 pub use crate::{Day, Solution};
+use anyhow::{bail, Error, Result};
 
 pub mod day01;
 pub mod day02;
@@ -26,7 +27,7 @@ pub mod day04;
 // pub mod day24;
 // pub mod day25;
 
-pub fn solve(day: Day, part: u8, input: &'static str) -> Solution {
+pub fn solve(day: Day, part: u8, input: &'static str) -> Result<Solution, Error> {
     match day {
         1 => day01::solve(part, input),
         2 => day02::solve(part, input),
@@ -53,6 +54,6 @@ pub fn solve(day: Day, part: u8, input: &'static str) -> Solution {
         // 23 => day23::solve(part, input),
         // 24 => day24::solve(part, input),
         // 25 => day25::solve(part, input),
-        _ => Solution::Str(String::from("invalid day")),
+        _ => bail!("day no yet implemented"),
     }
 }

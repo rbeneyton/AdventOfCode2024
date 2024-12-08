@@ -1,4 +1,5 @@
 use crate::Solution;
+use anyhow::{Error, Result};
 
 pub fn safe(levels: &[i8], skip: Option<usize>) -> bool {
     let mut prev = None;
@@ -29,7 +30,7 @@ pub fn safe(levels: &[i8], skip: Option<usize>) -> bool {
     true
 }
 
-pub fn solve(part: u8, input: &'static str) -> Solution {
+pub fn solve(part: u8, input: &'static str) -> Result<Solution, Error> {
     #![allow(unused)]
     let input = if input.len() > 0 {
         input
@@ -47,7 +48,7 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
             }
             n_safe += safe(&v, None) as u64;
         }
-        Solution::U64(n_safe)
+        Ok(Solution::U64(n_safe))
     } else {
         let mut n_safe = 0;
         'line: for line in input.lines() {
@@ -67,8 +68,12 @@ pub fn solve(part: u8, input: &'static str) -> Solution {
                 }
             }
         }
-        Solution::U64(n_safe)
+        Ok(Solution::U64(n_safe))
     }
+}
+
+pub fn sol(part: u8, input: &'static str) -> Solution {
+    solve(part, input).expect("solve test")
 }
 
 #[cfg(test)]
@@ -84,21 +89,21 @@ mod tests {
 
     #[test]
     fn part_1_sample() {
-        assert_eq!(solve(1, SAMPLE), Solution::U64(2));
+        assert_eq!(sol(1, SAMPLE), Solution::U64(2));
     }
 
     #[test]
     fn part_1() {
-        assert_eq!(solve(1, ""), Solution::U64(598));
+        assert_eq!(sol(1, ""), Solution::U64(598));
     }
 
     #[test]
     fn part_2_sample() {
-        assert_eq!(solve(2, SAMPLE), Solution::U64(4));
+        assert_eq!(sol(2, SAMPLE), Solution::U64(4));
     }
 
     #[test]
     fn part_2() {
-        assert_eq!(solve(2, ""), Solution::U64(634));
+        assert_eq!(sol(2, ""), Solution::U64(634));
     }
 }
