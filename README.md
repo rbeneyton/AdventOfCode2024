@@ -45,3 +45,10 @@ parsing with subtlety
 matrix and indices
 
 [Code](./src/solutions/day04.rs)
+
+## [Day 05: Print Queue](https://adventofcode.com/2024/day/5)
+
+ordering.
+part 2 assumes that a solution exists… and can be stopped earlier.
+
+[Code](./src/solutions/day05.rs)
