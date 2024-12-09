@@ -4,7 +4,7 @@ extern crate exitcode;
 use anyhow::{Context, Result};
 
 use env_logger::Builder;
-use log::{
+pub(crate) use log::{
     // debug,
     error,
     info,

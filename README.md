@@ -52,3 +52,10 @@ ordering.
 part 2 assumes that a solution exists… and can be stopped earlier.
 
 [Code](./src/solutions/day05.rs)
+
+## [Day 06: Guard Gallivant](https://adventofcode.com/2024/day/6)
+
+path…
+part 2 causality is implied… which wasn't clear at all (ie. no obstacle on previous positions)
+
+[Code](./src/solutions/day06.rs)
