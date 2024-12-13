@@ -59,3 +59,9 @@ path…
 part 2 causality is implied… which wasn't clear at all (ie. no obstacle on previous positions)
 
 [Code](./src/solutions/day06.rs)
+
+## [Day 07: Bridge Repair](https://adventofcode.com/2024/day/7)
+
+basic parsing and combinations.
+
+[Code](./src/solutions/day07.rs)
