@@ -65,3 +65,9 @@ part 2 causality is implied… which wasn't clear at all (ie. no obstacle on pre
 basic parsing and combinations.
 
 [Code](./src/solutions/day07.rs)
+
+## [Day 08: Resonant Collinearity](https://adventofcode.com/2024/day/8)
+
+antinode resonance definition were totally unclear as usual.
+
+[Code](./src/solutions/day08.rs)
