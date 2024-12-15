@@ -71,3 +71,12 @@ basic parsing and combinations.
 antinode resonance definition were totally unclear as usual.
 
 [Code](./src/solutions/day08.rs)
+
+
+
+
+## [Day 15: Warehouse Woes](https://adventofcode.com/2024/day/15)
+
+moving block and detect feasability.
+
+[Code](./src/solutions/day15.rs)
